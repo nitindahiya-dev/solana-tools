@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     
-      <div className="px-4 py-3 flex justify-between items-center w-full mx-auto flex-col md:flex-row">
+      <div className="px-4 my-5 py-3 flex justify-between items-center w-full mx-auto flex-col md:flex-row">
         {/* Logo */}
         <Link href="/">
           <span className="text-2xl text-white font-bold">MyBrand</span>

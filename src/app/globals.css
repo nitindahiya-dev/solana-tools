@@ -67,3 +67,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+.parallax-effect-img {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  background-image: url('../app/img/img3.jpeg');
+  background-size: 800px;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  
+}
+  .inner-element {
+    transform: translateZ(20px) translateX(-100px);
+    width: 100%;
+    margin-left: 25%;
+  }
