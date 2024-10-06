@@ -1,5 +1,4 @@
 import Banner from "@/components/Banner";
-import { Connect } from "@/components/Connect";
 import Faq from "@/components/Faq";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
@@ -13,7 +12,6 @@ export default function Home() {
       <TracingBeam>
       <Navbar />
       <Banner />
-      {/* <Connect /> */}
       <Services />
       <Faq />
     </TracingBeam>

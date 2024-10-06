@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useOutsideClick } from "@/hooks/use-outside-click";
+import  useOutsideClick  from "@/hooks/use-outside-click";
 
 type CardType = {
   title: string;
@@ -116,7 +116,7 @@ const Faq = () => {
         )}
       </AnimatePresence>
       <ul className="max-w-3xl mx-auto w-full gap-4">
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
