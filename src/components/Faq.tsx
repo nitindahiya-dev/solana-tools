@@ -1,14 +1,10 @@
 "use client";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import  useOutsideClick  from "@/hooks/use-outside-click";
+import useOutsideClick from "@/hooks/use-outside-click";
 
 type CardType = {
   title: string;
-  description: string;
-  src: string;
-  ctaText: string;
-  ctaLink: string;
   content: () => React.ReactNode;
 };
 
@@ -39,8 +35,8 @@ const Faq = () => {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h4 className="text-4xl font-bold mb-6">Frequently Asked Questions</h4>
+    <div className="flex flex-col items-center mt-[10vh] md:mt-[10rem] justify-center">
+      <h4 className="text-4xl font-bold mb-6 text-center">Frequently Asked Questions</h4>
       <AnimatePresence>
         {active && (
           <motion.div
@@ -68,9 +64,9 @@ const Faq = () => {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[70vw] h-auto rounded-xl md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-  
+
               <div>
                 <div className="flex justify-between items-start p-4">
                   <div>
@@ -80,22 +76,8 @@ const Faq = () => {
                     >
                       {active.title}
                     </motion.h3>
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400"
-                    >
-                      {active.description}
-                    </motion.p>
                   </div>
-                  <motion.a
-                    layoutId={`button-${active.title}-${id}`}
-                    href={active.ctaLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
-                  >
-                    {active.ctaText}
-                  </motion.a>
+
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -103,7 +85,7 @@ const Faq = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    className="text-neutral-600 text-xs md:text-sm lg:text-base md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -115,39 +97,29 @@ const Faq = () => {
           </div>
         )}
       </AnimatePresence>
-      <ul className="max-w-3xl mx-auto w-full gap-4">
+      <ul className="max-w-sm md:max-w-3xl mx-auto w-full gap-4">
         {cards.map((card) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer bg-gray-800 mb-5"
+            className="group p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer bg-gray-800 mb-5"
           >
             <div className="flex gap-4 flex-col md:flex-row ">
 
               <div>
                 <motion.h3
                   layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left"
+                  className="font-medium text-white text-center md:text-left group-hover:text-black"
                 >
                   {card.title}
                 </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400 text-center md:text-left"
-                >
-                  {card.description}
-                </motion.p>
+
               </div>
             </div>
-            <motion.button
-              layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4 md:mt-0"
-            >
-              {card.ctaText}
-            </motion.button>
           </motion.div>
         ))}
+
       </ul>
     </div>
   );
@@ -179,43 +151,59 @@ const CloseIcon = () => {
 
 const cards: CardType[] = [
   {
-    description: "Lana Del Rey",
-    title: "Summertime Sadness",
-    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates", // Fixed the key name here
+    title: "What is the Solana Token Creator?",
     content: () => (
       <p>
-        Lana Del Rey, an iconic American singer-songwriter, is celebrated for
-        her melancholic and cinematic music style. Born Elizabeth Woolridge
-        Grant in New York City, she has captivated audiences worldwide with
-        her haunting voice and introspective lyrics. <br /> <br /> Her songs
-        often explore themes of tragic romance, glamour, and melancholia,
-        drawing inspiration from both contemporary and vintage pop culture.
-        With a career that has seen numerous critically acclaimed albums, Lana
-        Del Rey has established herself as a unique and influential figure in
-        the music industry, earning a dedicated fan base and numerous
-        accolades.
+        The Orion Tools Solana Token Creator is an advanced Smart Contract empowering users to effortlessly generate customized SPL Tokens (Solana tokens), specifically tailored to their preferences in terms of supply, name, symbol, description, and image on the Solana Chain. Making tokens is super quick and cheap with our easy process.
       </p>
     ),
   },
   {
-    description: "Babbu Maan",
-    title: "Mitran Di Chhatri",
-    src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
+    title: "Is it Safe to Create Solana Tokens here?",
     content: () => (
       <p>
-        Babbu Maan is a well-known Punjabi singer, songwriter, and actor,
-        recognized for his distinctive voice and poignant lyrics. His music
-        often reflects the struggles and aspirations of the Punjabi
-        community, resonating with fans across the globe. <br /> <br /> With
-        a career spanning over two decades, Babbu Maan has released numerous
-        hit albums and singles, establishing himself as a leading figure in
-        the Punjabi music industry. His songs frequently blend traditional
-        Punjabi sounds with contemporary influences, making his work both
-        relatable and innovative.
+        Yes, our tools is completely safe. It is a dApp that creates your token, giving you and only you the mint and freeze Authority (the control of a SPL Token). Our dApp is audited and used by hundred of users every month.
+      </p>
+    ),
+  },
+  {
+    title: " How much time will the Solana Token Creator Take?",
+    content: () => (
+      <p>
+        The time of your Token Creation depends on the TPS Status of Solana. It usually takes just a few seconds so do not worry. If you have any issue please contact us
+      </p>
+    ),
+  },
+  {
+    title: "How much does it cost?",
+    content: () => (
+      <p>
+        The token creation currently cost 0.5 Sol, it includes all fees necessaries for the Token Creation in Solana mainnet.
+      </p>
+    ),
+  },
+  {
+    title: "Which Wallet can i use?",
+    content: () => (
+      <p>
+        You can use any Solana Wallet as Phantom, Solflare, Backpack, etc.
+      </p>
+    ),
+  },
+  {
+    title: "How many Tokens can I create for each decimal amount?",
+    content: () => (
+      <p>
+        Here is the max amount of tokens you can create for each decimal range.
+
+        <br />
+        0 to 4 - 1,844,674,407,370,955
+        <br />
+        5 to 7 - 1,844,674,407,370
+        <br />
+        8 - 184,467,440,737
+        <br />
+        9 - 18,446,744,073
       </p>
     ),
   },

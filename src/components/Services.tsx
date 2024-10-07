@@ -3,7 +3,6 @@ import React from "react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import Link from "next/link";
 
-
 const Services = () => {
     const content = [
         {
@@ -40,7 +39,6 @@ const Services = () => {
 
     return (
         <div className="flex flex-col items-center justify-center">
-
             <h3 className="text-4xl font-bold mb-6">Solana Powerful Tools</h3>
             <p className=" text-gray-400 max-w-2xl text-center mx-auto mb-8">
                 Start working with Solana Token Creator. It allows you to create Solana
@@ -50,7 +48,12 @@ const Services = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 my-10 gap-10">
                 {content.map((item, index) => (
-                    <CardSpotlight key={index} className="p-4 rounded-xl ml-10 w-[25rem] bg-gray-900 transition duration-300 ease-in-out hover:-translate-y-1">
+                    <CardSpotlight
+                        key={index}
+                        className="p-4 rounded-xl w-[25rem] transition duration-300 ease-in-out hover:-translate-y-1"
+                        color="#1f2937" // You can customize the hover color here
+                        radius={400}    // Adjust the size of the spotlight
+                    >
                         <h4 className="text-xl font-bold relative z-20 text-white line-clamp-1">
                             {item.heading}
                         </h4>
