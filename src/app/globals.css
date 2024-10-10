@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
  
-body{
-  overflow-x: hidden;
-}
 
 @layer base {
   /* :root {
@@ -34,7 +31,7 @@ body{
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   } */
-
+  
   :root {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -81,8 +78,24 @@ body{
   border-radius: 12px;
   
 }
-  .inner-element {
-    transform: translateZ(20px) translateX(-100px);
-    width: 100%;
-    margin-left: 25%;
-  }
+.inner-element {
+  transform: translateZ(20px) translateX(-100px);
+  width: 100%;
+  margin-left: 25%;
+}
+
+
+body{
+  overflow-x: hidden;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

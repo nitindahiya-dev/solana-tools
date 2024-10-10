@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     // Footer
     <section className="">
-      <div className="max-w-screen-xl px-4 mt-[3rem] py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl my-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav className="flex flex-wrap justify-center gap-5">
         
             <a href="#" className="text-base leading-6 text-white hover:text-gray-500">
@@ -59,9 +59,6 @@ const Footer = () => {
             </svg>
           </a>
         </div>
-        <p className="mt-8 text-base leading-6 text-center text-gray-400">
-          &copy; 2023 Your Company, Inc. All rights reserved.
-        </p>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +66,7 @@ function Navbar() {
               : 'max-h-0 opacity-0'
           } md:max-h-full md:opacity-100 md:flex md:items-center md:space-x-6 md:w-auto overflow-hidden w-full`}
         >
-          <ul className="flex flex-col md:flex-row text-white text-lg space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+          <ul className="flex flex-col md:flex-row md:items-center text-white text-lg space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
             <li>
               <Link href="/">
                 <span className="hover:text-gray-300 transition-colors duration-300">Home</span>
@@ -85,8 +87,10 @@ function Navbar() {
                 <span className="hover:text-gray-300 transition-colors duration-300">Contact</span>
               </Link>
             </li>
+        <WalletMultiButton />
           </ul>
         </div>
+
       </div>
   );
 }

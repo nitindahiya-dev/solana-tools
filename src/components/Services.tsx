@@ -50,7 +50,7 @@ const Services = () => {
                 {content.map((item, index) => (
                     <CardSpotlight
                         key={index}
-                        className="p-4 rounded-xl w-[25rem] transition duration-300 ease-in-out hover:-translate-y-1"
+                        className="p-4 rounded-xl w-[23rem] transition duration-300 ease-in-out hover:-translate-y-1"
                         color="#1f2937" // You can customize the hover color here
                         radius={400}    // Adjust the size of the spotlight
                     >
