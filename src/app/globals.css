@@ -99,3 +99,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.wallet-adapter-dropdown {
+  position: absolute !important;
+  top: 30px;
+  right: 40px;
+}

@@ -1,9 +1,6 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-
-
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -87,7 +84,6 @@ function Navbar() {
                 <span className="hover:text-gray-300 transition-colors duration-300">Contact</span>
               </Link>
             </li>
-        <WalletMultiButton />
           </ul>
         </div>
 

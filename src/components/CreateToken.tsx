@@ -28,19 +28,18 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
     const [img, setImg] = useState<string | null>(null);
     const [imgPreview, setImgPreview] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-    const [uploadingImage, setUploadingImage] = useState<boolean>(false); // State to track image upload status
+    const [uploadingImage, setUploadingImage] = useState<boolean>(false);
 
-    // Function to handle image upload
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setUploadingImage(true); // Set uploading state to true
+            setUploadingImage(true);
             const imgUrl = await uploadImagePinata(file);
             if (imgUrl) {
                 setImg(imgUrl);
                 setImgPreview(URL.createObjectURL(file));
             }
-            setUploadingImage(false); // Reset uploading state
+            setUploadingImage(false);
         }
     };
 
@@ -65,7 +64,6 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
         }
     };
 
-    // Function to upload metadata to Pinata
     const uploadMetadata = async () => {
         try {
             const metadata = { name, symbol, description, image: img };
@@ -85,40 +83,39 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
         }
     };
 
-    // Function to create the token on Solana
     const createToken = async (e: React.FormEvent) => {
         e.preventDefault();
+    
         if (!wallet.publicKey) {
             toast.error("Please connect your wallet.");
             return;
         }
-
-        if (!name || !symbol || !decimals || !amount || !description || !img) {
+    
+        if (!wallet.publicKey || !name || !symbol || !decimals || !amount || !description || !img) {
             toast.error("Please fill in all fields and upload an image.");
             return;
         }
-
+    
         try {
             setLoading(true);
+    
             const mintKeypair = Keypair.generate();
             const metadataUri = await uploadMetadata();
-
             if (!metadataUri) {
                 toast.error("Failed to upload metadata.");
                 return;
             }
-
+    
             const associatedToken = await getAssociatedTokenAddress(
                 mintKeypair.publicKey,
                 wallet.publicKey,
                 false,
                 TOKEN_2022_PROGRAM_ID
             );
-
-            const space = 82; // Adjust based on mint size and metadata size
-
-            // Getting minimum balance for rent exemption
+    
+            const space = 82; // Adjust space based on mint size and metadata size
             const lamports = await connection.getMinimumBalanceForRentExemption(space);
+    
             const transaction = new Transaction().add(
                 SystemProgram.createAccount({
                     fromPubkey: wallet.publicKey,
@@ -143,29 +140,29 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                     TOKEN_2022_PROGRAM_ID
                 )
             );
-
+    
             transaction.feePayer = wallet.publicKey;
             transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
-
             transaction.partialSign(mintKeypair);
-            await wallet.sendTransaction(transaction, connection);
-
-            toast.success(`Token created! Mint address: ${mintKeypair.publicKey.toBase58()}`);
-        } catch (error: unknown) {
-            if (axios.isAxiosError(error)) {
-                console.error("Error:", error.response?.data || error.message);
-                toast.error("Transaction failed: " + error.message);
-            } else if (error instanceof Error) {
-                console.error("Transaction failed:", error.message);
-                toast.error("Transaction failed: " + error.message);
-            } else {
-                console.error("An unexpected error occurred:", error);
-                toast.error("An unexpected error occurred.");
+    
+            // Improved error handling and logging
+            try {
+                const signature = await wallet.sendTransaction(transaction, connection);
+                await connection.confirmTransaction(signature);
+                toast.success(`Token created! Mint address: ${mintKeypair.publicKey.toBase58()}`);
+            } catch (txError) {
+                console.error("Transaction error:", txError);
+                toast.error("Transaction failed: " + (txError as Error).message);
             }
+    
+        } catch (error: unknown) {
+            console.error("Error creating token:", error);
+            toast.error("An error occurred while creating the token: " + (error as Error).message);
         } finally {
             setLoading(false);
         }
     };
+    
 
     return (
         <>
@@ -222,10 +219,9 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                     placeholder="Token Name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="  text-white"
-                                    required
                                 />
                             </div>
+
                             <div className="flex flex-col space-y-1.5">
                                 <Label className="text-white font-bold text-sm">
                                     <span className="text-red-600 mr-1">*</span>Symbol:
@@ -234,50 +230,44 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                     placeholder="Token Symbol"
                                     value={symbol}
                                     onChange={(e) => setSymbol(e.target.value)}
-                                    className="  text-white"
-                                    required
                                 />
                             </div>
+
                             <div className="flex flex-col space-y-1.5">
                                 <Label className="text-white font-bold text-sm">
                                     <span className="text-red-600 mr-1">*</span>Decimals:
                                 </Label>
                                 <Input
+                                    placeholder="Token Decimals"
                                     type="number"
-                                    placeholder="Decimals"
                                     value={decimals}
-                                    onChange={(e) => setDecimals(Number(e.target.value))}
-                                    className="  text-white"
-                                    required
+                                    onChange={(e) => setDecimals(e.target.value ? parseInt(e.target.value) : "")}
                                 />
                             </div>
+
                             <div className="flex flex-col space-y-1.5">
                                 <Label className="text-white font-bold text-sm">
                                     <span className="text-red-600 mr-1">*</span>Amount:
                                 </Label>
                                 <Input
+                                    placeholder="Total Supply"
                                     type="number"
-                                    placeholder="Amount"
                                     value={amount}
-                                    onChange={(e) => setAmount(Number(e.target.value))}
-                                    className="  text-white"
-                                    required
+                                    onChange={(e) => setAmount(e.target.value ? parseFloat(e.target.value) : "")}
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label className="text-white font-bold text-sm">
-                                <span className="text-red-600 mr-1">*</span>Description:
-                            </Label>
+
+                        <div className="flex flex-col space-y-1.5 mb-5">
+                            <Label className="text-white font-bold text-sm">Description:</Label>
                             <Input
                                 placeholder="Token Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="  text-white"
-                                required
                             />
                         </div>
-                        <Button type="submit" className="mt-5 w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-500" disabled={loading}>
+
+                        <Button type="submit" className="w-full" disabled={loading}>
                             {loading ? "Creating Token..." : "Create Token"}
                         </Button>
                     </form>
