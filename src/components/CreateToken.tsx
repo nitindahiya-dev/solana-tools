@@ -267,12 +267,14 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                             />
                         </div>
 
-                        <Button type="submit" className="w-full" disabled={loading}>
+                        <Button type="submit" className="w-full font-bold" disabled={loading}>
                             {loading ? "Creating Token..." : "Create Token"}
                         </Button>
                     </form>
                 </CardContent>
             </Card>
+            <p className='font-bold'>Currently this feature is not working</p>
+
         </>
     );
 };
