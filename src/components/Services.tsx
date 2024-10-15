@@ -20,7 +20,7 @@ const Services = () => {
         {
             heading: "Airdrop Token",
             para: "Airdrop your Solana token to a wide audience.",
-            link_Name: "Start Airdrop",
+            link_Name: "Get Airdrop",
             link: "/airdrop-token",
         },
         {

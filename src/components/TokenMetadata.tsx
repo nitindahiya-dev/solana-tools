@@ -10,7 +10,6 @@ import { Button } from './ui/button';
 import { ToastContainer } from 'react-toastify';
 import { Card, CardContent } from './ui/card';
 import Image from "next/image";
-import { toast } from 'react-toastify';
 
 
 interface Metadata {
@@ -111,7 +110,7 @@ const TokenMetadata = () => {
         <>
             <ToastContainer />
             <Card className="bg-transparent mx-auto">
-                <CardContent>
+                <CardContent className="h-[65vh] flex flex-col justify-center">
                     <form className='flex flex-col justify-center gap-5 border-dashed border-[3px] border-white p-10 rounded-xl'>
                         <div className="flex flex-col gap-5">
                             <Label className="text-white font-bold text-sm">Token Public Key:</Label>
@@ -142,8 +141,8 @@ const TokenMetadata = () => {
                             )}
                         </div>
                     )}
+                <p className='font-bold mt-5'>Currently this feature is not working</p>
                 </CardContent>
-                <p className='font-bold'>Currently this feature is not working</p>
             </Card>
         </>
     );

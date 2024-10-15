@@ -13,7 +13,7 @@ const page = () => {
   return (
     <WalletContextProvider>
       <WalletMultiButton />
-      <div className="flex justify-center flex-col max-w-7xl mx-auto">
+      <div className="flex justify-center flex-col max-w-7xl mx-auto ">
         <Navbar />
         <CreateToken connection={connection}/>
         <Footer />

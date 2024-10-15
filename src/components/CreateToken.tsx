@@ -167,9 +167,9 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
     return (
         <>
             <ToastContainer />
-            <Card className="bg-transparent mx-auto">
+            <Card className="bg-transparent mx-auto ">
                 <CardContent>
-                    <form onSubmit={createToken}>
+                    <form onSubmit={createToken} className="h-[65vh] flex flex-col justify-center ">
                         <div className="w-full h-48 flex items-center justify-center border-2 border-dashed border-white/50 rounded-lg cursor-pointer">
                             <label htmlFor="upload-image" className="flex flex-col items-center space-y-2">
                                 {imgPreview ? (
@@ -270,10 +270,10 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                         <Button type="submit" className="w-full font-bold" disabled={loading}>
                             {loading ? "Creating Token..." : "Create Token"}
                         </Button>
+            <p className='font-bold mt-5'>Currently this feature is not working</p>
                     </form>
                 </CardContent>
             </Card>
-            <p className='font-bold'>Currently this feature is not working</p>
 
         </>
     );
