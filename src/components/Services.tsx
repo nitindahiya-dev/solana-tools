@@ -15,7 +15,7 @@ const Services = () => {
             heading: "Get your Associated Token Account(ATA) address",
             para: "Find your ATA address with only few steps.",
             link_Name: "Learn More",
-            link: "/deploy-token",
+            link: "/ata-address",
         },
         {
             heading: "Airdrop Token",

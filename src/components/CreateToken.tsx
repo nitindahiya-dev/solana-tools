@@ -85,37 +85,37 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
 
     const createToken = async (e: React.FormEvent) => {
         e.preventDefault();
-    
+
         if (!wallet.publicKey) {
             toast.error("Please connect your wallet.");
             return;
         }
-    
+
         if (!wallet.publicKey || !name || !symbol || !decimals || !amount || !description || !img) {
             toast.error("Please fill in all fields and upload an image.");
             return;
         }
-    
+
         try {
             setLoading(true);
-    
+
             const mintKeypair = Keypair.generate();
             const metadataUri = await uploadMetadata();
             if (!metadataUri) {
                 toast.error("Failed to upload metadata.");
                 return;
             }
-    
+
             const associatedToken = await getAssociatedTokenAddress(
                 mintKeypair.publicKey,
                 wallet.publicKey,
                 false,
                 TOKEN_2022_PROGRAM_ID
             );
-    
+
             const space = 82; // Adjust space based on mint size and metadata size
             const lamports = await connection.getMinimumBalanceForRentExemption(space);
-    
+
             const transaction = new Transaction().add(
                 SystemProgram.createAccount({
                     fromPubkey: wallet.publicKey,
@@ -140,11 +140,11 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                     TOKEN_2022_PROGRAM_ID
                 )
             );
-    
+
             transaction.feePayer = wallet.publicKey;
             transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
             transaction.partialSign(mintKeypair);
-    
+
             // Improved error handling and logging
             try {
                 const signature = await wallet.sendTransaction(transaction, connection);
@@ -154,7 +154,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                 console.error("Transaction error:", txError);
                 toast.error("Transaction failed: " + (txError as Error).message);
             }
-    
+
         } catch (error: unknown) {
             console.error("Error creating token:", error);
             toast.error("An error occurred while creating the token: " + (error as Error).message);
@@ -162,12 +162,12 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
             setLoading(false);
         }
     };
-    
+
 
     return (
         <>
             <ToastContainer />
-            <Card className="bg-transparent mx-auto ">
+            <Card className="flex flex-col mx-auto max-h-screen gap-10 p-6 rounded-2xl shadow-sm w-full md:max-w-5xl backdrop-blur-md bg-opacity-30 bg-black z-50 ">
                 <CardContent>
                     <form onSubmit={createToken} className="h-[65vh] flex flex-col justify-center ">
                         <div className="w-full h-48 flex items-center justify-center border-2 border-dashed border-white/50 rounded-lg cursor-pointer">
@@ -218,6 +218,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                 <Input
                                     placeholder="Token Name"
                                     value={name}
+                                    className="border-white focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none"
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
@@ -229,6 +230,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                 <Input
                                     placeholder="Token Symbol"
                                     value={symbol}
+                                    className="border-white focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none"
                                     onChange={(e) => setSymbol(e.target.value)}
                                 />
                             </div>
@@ -241,6 +243,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                     placeholder="Token Decimals"
                                     type="number"
                                     value={decimals}
+                                    className="border-white focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none"
                                     onChange={(e) => setDecimals(e.target.value ? parseInt(e.target.value) : "")}
                                 />
                             </div>
@@ -253,6 +256,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                                     placeholder="Total Supply"
                                     type="number"
                                     value={amount}
+                                    className="border-white focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none"
                                     onChange={(e) => setAmount(e.target.value ? parseFloat(e.target.value) : "")}
                                 />
                             </div>
@@ -263,6 +267,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                             <Input
                                 placeholder="Token Description"
                                 value={description}
+                                className="border-white focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </div>
@@ -270,7 +275,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
                         <Button type="submit" className="w-full font-bold" disabled={loading}>
                             {loading ? "Creating Token..." : "Create Token"}
                         </Button>
-            <p className='font-bold mt-5'>Currently this feature is not working</p>
+                        <p className='font-bold mt-5'>Currently this feature is not working</p>
                     </form>
                 </CardContent>
             </Card>

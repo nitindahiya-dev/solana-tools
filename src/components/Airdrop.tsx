@@ -90,9 +90,9 @@ export function Airdrop() {
     
     <>
     <ToastContainer />
-    <div className="h-[65vh] flex flex-col justify-center items-center">
-      <Card className="p-6 rounded-2xl shadow-sm w-full md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
-        <form
+    <div className="h-[65vh] flex flex-col justify-center items-center ">
+      <Card className="p-6 rounded-2xl shadow-sm w-full  md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
+        <form className="border-[3px] border-white rounded-xl pt-5 border-dashed"
           onSubmit={(e) => {
             e.preventDefault();
           }}
