@@ -91,20 +91,20 @@ export function Airdrop() {
     <>
     <ToastContainer />
     <div className="h-[65vh] flex flex-col justify-center items-center ">
-      <Card className="p-6 rounded-2xl shadow-sm w-full  md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
-        <form className="border-[3px] border-white rounded-xl pt-5 border-dashed"
+      <Card className="md:p-6 p-4 w-[95vw] rounded-2xl shadow-sm md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
+        <form className="border-[3px] border-white rounded-xl p-4  md:pt-5 border-dashed"
           onSubmit={(e) => {
             e.preventDefault();
           }}
         >
-          <div className="flex text-white items-center justify-between px-6">
-            <CardHeader>
+          <div className="flex text-white  items-center justify-between md:px-6">
+            <CardHeader className="mb-8 md:mb-0">
               <CardTitle className="text-xl md:text-2xl">Request Airdrop</CardTitle>
               <CardDescription className="text-xs text-gray-400">
                 Maximum of 2 requests per hour
               </CardDescription>
             </CardHeader>
-            <div className="flex flex-col space-y-1.5">
+            <div className="flex flex-col md:space-y-1.5">
               <Select value={network} onValueChange={setNetwork}>
                 <SelectTrigger id="network">
                   <SelectValue placeholder="Devnet" />
@@ -116,7 +116,7 @@ export function Airdrop() {
               </Select>
             </div>
           </div>
-          <CardContent>
+          <CardContent className="mb-8 md:mb-0">
             <div className="grid w-full items-center gap-4">
               <div className="flex text-white items-center gap-5">
                 <Input

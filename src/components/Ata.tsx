@@ -69,14 +69,14 @@ const Ata = () => {
       <ToastContainer />
       <div className="flex flex-col mx-auto max-h-screen gap-10">
 
-        <h1 className="text-center text-4xl mt-10 font-bold">
+        <h1 className="text-center text-2xl md:text-4xl mt-10 font-bold">
           Get Your ATA Public Key
         </h1>
 
-        <div className="flex flex-col gap-5 p-10 rounded-2xl shadow-sm w-full md:max-w-4xl backdrop-blur-md bg-opacity-30 bg-black z-50">
+        <div className="flex flex-col gap-5 md:p-10 px-5 py-7 rounded-2xl shadow-sm w-[90vw] md:max-w-4xl backdrop-blur-md bg-opacity-30 bg-black z-50 ">
           <div className=" mx-auto flex flex-col gap-5">
             <Input
-              className="border-white w-[700px] focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none "
+              className="border-white w-[70vw] md:w-[700px] focus:border-none focus:outline-none focus-visible:border-none focus-visible:outline-none "
               type="text"
               placeholder="Enter Token Public Address"
               value={mintAddress}

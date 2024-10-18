@@ -109,9 +109,9 @@ const TokenMetadata = () => {
     return (
         <>
             <ToastContainer />
-            <Card className="flex flex-col mx-auto justify-center gap-10 mt-[10vh] shadow-sm w-full md:max-w-5xl z-50 backdrop-blur-md bg-opacity-30 bg-black">
+            <Card className="flex flex-col mx-auto justify-center p-5 gap-10 mt-[10vh] shadow-sm w-[95vw] md:max-w-5xl z-50 backdrop-blur-md bg-opacity-30 bg-black">
                 <CardContent className="">
-                    <form className='flex flex-col justify-center gap-5 border-dashed border-[3px] border-white p-10 rounded-xl'>
+                    <form className='flex flex-col justify-center gap-5 border-dashed border-[3px] border-white md:p-10 p-5 rounded-xl'>
                         <div className="flex flex-col gap-5">
                             <Label className="text-white font-bold text-sm">Token Public Key:</Label>
                             <Input

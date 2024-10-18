@@ -99,9 +99,9 @@ export function SendToken() {
     <>
       <ToastContainer />
       <div className="h-[65vh] flex gap-8 flex-col justify-center items-center">
-        <h1 className="text-5xl font-semibold">Send Transaction</h1>
-        <div className="p-6 rounded-2xl shadow-sm w-full md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
-          <form className="flex flex-col gap-6 border-[3px] border-white border-dashed p-10 rounded-xl" onSubmit={handleSend}>
+        <h1 className="md:text-5xl text-2xl font-semibold">Send Transaction</h1>
+        <div className="md:p-6 p-4 rounded-2xl shadow-sm w-[95vw] md:max-w-3xl backdrop-blur-md bg-opacity-30 bg-black z-50">
+          <form className="flex flex-col gap-6 border-[3px] border-white border-dashed md:p-10 p-5 rounded-xl" onSubmit={handleSend}>
             <div className="flex text-white flex-col gap-2">
               <Label className="text-md font-semibold">To</Label>
               <Input

@@ -167,7 +167,7 @@ const CreateToken = ({ connection }: { connection: Connection }) => {
     return (
         <>
             <ToastContainer />
-            <Card className="flex flex-col mx-auto max-h-screen gap-10 p-6 rounded-2xl shadow-sm w-full md:max-w-5xl backdrop-blur-md bg-opacity-30 bg-black z-50 ">
+            <Card className="flex flex-col mx-auto max-h-screen gap-10 p-6 rounded-2xl shadow-sm w-[95vw] md:max-w-5xl backdrop-blur-md bg-opacity-30 bg-black z-50 ">
                 <CardContent>
                     <form onSubmit={createToken} className="h-[65vh] flex flex-col justify-center ">
                         <div className="w-full h-48 flex items-center justify-center border-2 border-dashed border-white/50 rounded-lg cursor-pointer">
