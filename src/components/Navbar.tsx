@@ -13,7 +13,7 @@ function Navbar() {
       <div className="px-4 my-5 py-3 flex justify-between items-center w-full mx-auto flex-col md:flex-row">
         {/* Logo */}
         <Link href="/">
-          <span className="text-2xl text-white font-bold">MyBrand</span>
+          <span className="text-2xl text-white font-bold">Solana Tools</span>
         </Link>
 
         {/* Hamburger Icon for Mobile */}
@@ -64,19 +64,10 @@ function Navbar() {
           } md:max-h-full md:opacity-100 md:flex md:items-center md:space-x-6 md:w-auto overflow-hidden w-full`}
         >
           <ul className="flex flex-col md:flex-row md:items-center text-white text-lg space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
-            <li>
-              <Link href="/">
-                <span className="hover:text-gray-300 transition-colors duration-300">Home</span>
-              </Link>
-            </li>
+            
             <li>
               <Link href="/about">
                 <span className="hover:text-gray-300 transition-colors duration-300">About</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/services">
-                <span className="hover:text-gray-300 transition-colors duration-300">Services</span>
               </Link>
             </li>
             <li>
