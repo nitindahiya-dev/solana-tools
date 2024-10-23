@@ -6,37 +6,49 @@ import Link from "next/link";
 const Services = () => {
     const content = [
         {
-            heading: "Create Token",
-            para: "Easily create your own Solana token without coding.",
-            link_Name: "Click Here",
+            heading: "Create Your Token",
+            para: "Effortlessly launch your own Solana token without any coding experience.",
+            link_Name: "Create Now",
             link: "/create-token",
         },
         {
-            heading: "Get your Associated Token Account(ATA) address",
-            para: "Find your ATA address with only few steps.",
-            link_Name: "Learn More",
+            heading: "Get Your ATA Address",
+            para: "Find your Associated Token Account (ATA) address in just a few clicks.",
+            link_Name: "Find Address",
             link: "/ata-address",
         },
         {
-            heading: "Airdrop Token",
-            para: "Airdrop your Solana token to a wide audience.",
-            link_Name: "Get Airdrop",
+            heading: "Airdrop Your Token",
+            para: "Easily distribute your Solana tokens to a large audience.",
+            link_Name: "Airdrop Now",
             link: "/airdrop-token",
         },
         {
-            heading: "Transfer Token",
-            para: "Easily transfer your Solana tokens to others.",
-            link_Name: "Transfer Now",
+            heading: "Transfer Tokens",
+            para: "Seamlessly transfer your Solana tokens to others in seconds.",
+            link_Name: "Start Transfer",
             link: "/transfer-token",
         },
         {
-            heading: "Update Metadata",
-            para: "Update the metadata for your Solana token.",
-            link_Name: "Update",
+            heading: "Update Token Metadata",
+            para: "Keep your Solana token's metadata fresh and up-to-date.",
+            link_Name: "Update Now",
             link: "/update-metadata",
         },
+        {
+            heading: "Swap Tokens",
+            para: "Swap your Solana tokens instantly with ease.",
+            link_Name: "Swap Now",
+            link: "/swap-token",
+        },
+        {
+            heading: "Create NFTs",
+            para: "Mint your own NFTs on the Solana blockchain with zero hassle.",
+            link_Name: "Create NFT",
+            link: "/create-nft",
+        },
     ];
-
+    
     return (
         <div className="flex flex-col items-center justify-center">
             <h3 className="text-4xl font-bold mb-6">Solana Powerful Tools</h3>

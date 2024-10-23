@@ -103,7 +103,7 @@ const Faq = () => {
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
-            className="group p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer bg-gray-800 mb-5"
+            className="group p-4 flex flex-col md:flex-row justify-between items-center hover:bg-purple-400 dark:hover:bg-neutral-800 rounded-xl cursor-pointer bg-gray-800 mb-5"
           >
             <div className="flex gap-4 flex-col md:flex-row ">
 

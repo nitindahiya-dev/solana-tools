@@ -105,3 +105,12 @@ input[type=number] {
   top: 30px;
   right: 40px;
 }
+
+@media screen and (max-width : 500px) {
+  .wallet-adapter-dropdown {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+}
