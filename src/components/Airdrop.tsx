@@ -21,7 +21,7 @@ import { useState, useEffect, useCallback } from "react";
 import { LAMPORTS_PER_SOL, Connection, clusterApiUrl } from "@solana/web3.js";
 import { toast, ToastContainer } from 'react-toastify';
 
-export function Airdrop() {
+const Airdrop = () => {
   const { publicKey, connected } = useWallet(); // Extract publicKey and connected state
   const [network, setNetwork] = useState("devnet");
   const [amount, setAmount] = useState("");
@@ -167,3 +167,4 @@ export function Airdrop() {
   </>
   );
 }
+export default Airdrop;

@@ -43,7 +43,7 @@ const Footer = () => {
               />
             </svg>
           </Link>
-          <Link href="https://x.com/nitin_dahiya199" target='_blank' target='_black' className="text-gray-400 hover:text-gray-500">
+          <Link href="https://x.com/nitin_dahiya199" target='_blank' className="text-gray-400 hover:text-gray-500">
             <span className="sr-only">Twitter</span>
             <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
               <path

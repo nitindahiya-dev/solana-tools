@@ -9,7 +9,7 @@ import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana
 import "react-toastify/dist/ReactToastify.css";
 
 
-export function SendToken() {
+const SendToken:React.FC = () => {
   const { connection } = useConnection();
   const wallet = useWallet();
 
@@ -139,3 +139,5 @@ export function SendToken() {
     </>
   );
 }
+
+export default SendToken;

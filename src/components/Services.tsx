@@ -35,18 +35,19 @@ const Services = () => {
             link_Name: "Update Now",
             link: "/update-metadata",
         },
-        {
-            heading: "Swap Tokens",
-            para: "Swap your Solana tokens instantly with ease.",
-            link_Name: "Swap Now",
-            link: "/swap-token",
-        },
-        {
-            heading: "Create NFTs",
-            para: "Mint your own NFTs on the Solana blockchain with zero hassle.",
-            link_Name: "Create NFT",
-            link: "/create-nft",
-        },
+
+        // {
+        //     heading: "Swap Tokens",
+        //     para: "Swap your Solana tokens instantly with ease.",
+        //     link_Name: "Swap Now",
+        //     link: "/swap-token",
+        // },
+        // {
+        //     heading: "Create NFTs",
+        //     para: "Mint your own NFTs on the Solana blockchain with zero hassle.",
+        //     link_Name: "Create NFT",
+        //     link: "/create-nft",
+        // },
     ];
     
     return (

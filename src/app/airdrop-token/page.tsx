@@ -10,10 +10,15 @@ import '@solana/wallet-adapter-react-ui/styles.css';
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS
 
 import Footer from '@/components/Footer';
-import { Airdrop } from '@/components/Airdrop';
 import Navbar from '@/components/Navbar';
+import dynamic from 'next/dynamic';
 
-export default function Home() {
+const Airdrop = dynamic(() => import('@/components/Airdrop'), {
+    loading: () => <p>Loading...</p>, // Optional loading state
+  });
+
+
+  const Page = () => {
     return (
         <ConnectionProvider endpoint={"https://solana-devnet.g.alchemy.com/v2/YMEA2JwMZDAKAmATUjlwvrpP0Rnmc2YF"}>
             <WalletProvider wallets={[]} autoConnect>
@@ -32,3 +37,5 @@ export default function Home() {
         </ConnectionProvider>
     );
 }
+
+export default Page;
