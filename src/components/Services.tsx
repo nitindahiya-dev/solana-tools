@@ -6,6 +6,12 @@ import Link from "next/link";
 const Services = () => {
     const content = [
         {
+            heading: "Create Wallet",
+            para: "Create & manage crypto wallets for multiple blockchains.",
+            link_Name: "Create Now",
+            link: "https://create-web3-wallet.netlify.app", // external URL without leading "/"
+        },
+        {
             heading: "Create Your Token",
             para: "Effortlessly launch your own Solana token without any coding experience.",
             link_Name: "Create Now",
@@ -35,25 +41,12 @@ const Services = () => {
             link_Name: "Update Now",
             link: "/update-metadata",
         },
-
-        // {
-        //     heading: "Swap Tokens",
-        //     para: "Swap your Solana tokens instantly with ease.",
-        //     link_Name: "Swap Now",
-        //     link: "/swap-token",
-        // },
-        // {
-        //     heading: "Create NFTs",
-        //     para: "Mint your own NFTs on the Solana blockchain with zero hassle.",
-        //     link_Name: "Create NFT",
-        //     link: "/create-nft",
-        // },
     ];
     
     return (
         <div className="flex flex-col items-center justify-center">
             <h3 className="text-4xl font-bold mb-6">Solana Powerful Tools</h3>
-            <p className=" text-gray-400 max-w-2xl text-center mx-auto mb-8">
+            <p className="text-gray-400 max-w-2xl text-center mx-auto mb-8">
                 Start working with Solana Token Creator. It allows you to create Solana
                 tokens by creating, deploying, airdropping, transferring, and updating
                 metadata.
@@ -64,8 +57,8 @@ const Services = () => {
                     <CardSpotlight
                         key={index}
                         className="p-4 rounded-xl w-[23rem] transition duration-300 ease-in-out hover:-translate-y-1"
-                        color="#1f2937" // You can customize the hover color here
-                        radius={400}    // Adjust the size of the spotlight
+                        color="#1f2937" 
+                        radius={400}
                     >
                         <h4 className="text-xl font-bold relative z-20 text-white line-clamp-1">
                             {item.heading}
@@ -74,7 +67,12 @@ const Services = () => {
                             {item.para}
                         </p>
                         <p className="mb-2">
-                            <Link href={item.link} className="bg-purple-400 font-bold py-2 px-4 text-black rounded-full cursor-pointer mt-5 relative z-20">
+                            <Link 
+                                href={item.link}
+                                target={item.link.startsWith("http") ? "_blank" : "_self"}
+                                rel={item.link.startsWith("http") ? "noopener noreferrer" : ""}
+                                className="bg-purple-400 font-bold py-2 px-4 text-black rounded-full cursor-pointer mt-5 relative z-20"
+                            >
                                 {item.link_Name}
                             </Link>
                         </p>
